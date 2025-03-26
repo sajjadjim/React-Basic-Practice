@@ -1,10 +1,25 @@
+import { Suspense } from 'react'
 import './App.css'
-function App() {
+import Countries from './components/countries/countries'
 
+const AllCountries = fetch('https://restcountries.com/v3.1/all')
+.then(res => res.json())
+
+// Get Country File ALL
+// const getCountryAll = async() =>{
+//   const res = await fetch('https://restcountries.com/v3.1/all')
+//   return(res.json())
+// } 
+// const AllCountries = getCountryAll();
+
+function App() {
   return (
     <>
-<h1>React And CSS File</h1>
-<p>The Name of the value :</p>
+
+<Suspense fallback={<h2>Loading Data File ......</h2>}>
+  <Countries AllCountries={AllCountries}></Countries>
+</Suspense>
+
     </>
   )
 }
