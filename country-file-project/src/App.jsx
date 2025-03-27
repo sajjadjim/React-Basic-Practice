@@ -1,16 +1,15 @@
 import { Suspense } from 'react'
 import './App.css'
-import Countries from './components/countries/countries'
+import Countries from './components/countries/Countries'
 
-const AllCountries = fetch('https://restcountries.com/v3.1/all')
-.then(res => res.json())
+
 
 // Get Country File ALL
-// const getCountryAll = async() =>{
-//   const res = await fetch('https://restcountries.com/v3.1/all')
-//   return(res.json())
-// } 
-// const AllCountries = getCountryAll();
+const getCountryAll = async() =>{
+const res = await fetch('https://restcountries.com/v3.1/all')
+return(res.json())
+} 
+const AllCountries = getCountryAll();
 
 function App() {
   return (
