@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './country.css'
-const country = ({country , handleVisited}) => {
+export default function country  ({country , handleVisited ,handleVisitedFlags}){
 // console.log(country)
 const [visit,setVisited] = useState(false)
 
@@ -8,11 +8,12 @@ const handleButton = () =>{
 setVisited(!visit)
 handleVisited(country)
 }
+
 //AS A Check Marked Code here
-const [marked , setMarked] = useState(false)
-const CheckMarkedButton = ()=>{
-setMarked(!marked)
-}
+// const [marked , setMarked] = useState(false)
+// const CheckMarkedButton = ()=>{
+// setMarked(!marked)
+// }
 
     return (
             <div className={`border-2 mt-5 p-5 rounded-xl grid  justify-items-center gap-5 ${visit && 'visited-card'}`}>
@@ -25,11 +26,10 @@ setMarked(!marked)
             <button className={`${visit && 'button-color'}`} onClick={handleButton}>
                 { visit?'Visited' : 'Not Visited'}
                 </button>
-
-            <button onClick={CheckMarkedButton}>{marked ? 'Check Mark' : "Not Check"}</button>
+            <button onClick={()=>  handleVisitedFlags(country.flags.png)}>Done ✅</button>
+            {/* <button onClick={CheckMarkedButton}>{marked ? 'Check Mark' : "Not Check"}</button> */}
         </div>
     );
 };
 
-export default country;
 
